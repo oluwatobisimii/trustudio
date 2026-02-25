@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Trajan Pro 3 Font Face Declarations */
+@font-face {
+  font-family: "Trajan Pro 3";
+  src: url("../assets/fonts/TrajanPro3-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Trajan Pro 3";
+  src: url("../assets/fonts/TrajanPro3-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -24,4 +41,9 @@ body {
 }
 .font-playfair {
   font-family: "Playfair Display", serif;
+}
+
+/* Trajan Pro 3 Font Utility */
+.font-trajan {
+  font-family: "Trajan Pro 3", serif;
 }

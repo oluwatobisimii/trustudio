@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const AboutSection = () => {
   return (
-    <section className=" bg-white">
+    <section className=" bg-white dark:bg-black dark:text-white w-full lg:py-20">
       <div className="container mx-auto flex flex-col md:flex-row justify-center py-25 px-4 md:px-20">
         {/* Left: Logo & Play Button */}
         <div className="flex flex-col items-center justify-center bg-gray-200 w-full md:w-1/3 aspect-[9/16] mr-0 md:mr-12 rounded-md relative overflow-hidden">
@@ -23,20 +23,20 @@ const AboutSection = () => {
         {/* Right: Text & Stats */}
         <div className="flex-1 flex flex-col gap-8 mt-8 md:mt-0 max-w-[600px]">
           <div>
-            <h5 className="text-xs font-bold tracking-wide mb-2 text-gray-700">
+            <h5 className="text-xs font-bold tracking-wide mb-2 text-gray-700 dark:text-white">
               ABOUT US
             </h5>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#3A2C1A] leading-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4  leading-tight font-trajan">
               At TruStudio, Everything
               <br />
               Starts With A Story
             </h2>
-            <p className="text-gray-600 mb-2">
+            <p className="text-gray-600 dark:text-white mb-2">
               Our heart beats for turning events into experiences you won’t
               forget. We don’t just cover events; we craft immersive,
               story-driven moments that pull audiences right in.
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-white">
               And that storytelling magic? It flows into everything we create.
               Documentaries that uncover truth and move you. B2B & B2C Content
               that connects brands with people. Short Films that pack a powerful
