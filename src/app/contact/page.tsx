@@ -7,8 +7,8 @@ const ContactPage = () => {
         src="https://scythe-sociology-37e.notion.site/ebd//2e7f2350985180f386efc9ece8981b91"
         width="100%"
         height="100%"
-        frameborder="0"
-        allowfullscreen
+        frameBorder="0"
+        allowFullScreen
         title="Contact Form"
         style={{
           border: "none",
