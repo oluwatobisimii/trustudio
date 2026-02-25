@@ -7,7 +7,7 @@ const AboutSection = () => {
         {/* Left: Logo & Play Button */}
         <div className="flex flex-col items-center justify-center bg-gray-200 w-full md:w-1/3 aspect-[9/16] mr-0 md:mr-12 rounded-md relative overflow-hidden">
           {/* Video Placeholder */}
-          <iframe
+          {/* <iframe
             width="491"
             height="872"
             src="https://www.youtube.com/embed/LCjyv9EqEaw?autoplay=1&mute=1&loop=1&playlist=LCjyv9EqEaw"
@@ -17,7 +17,14 @@ const AboutSection = () => {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
             className="w-full h-full object-cover rounded-md"
-          ></iframe>
+          ></iframe> */}
+          <video
+            src={"./TeamShoot.mov"}
+            autoPlay
+            muted
+            loop
+            className="w-full h-full object-cover rounded-md"
+          />
         </div>
 
         {/* Right: Text & Stats */}
