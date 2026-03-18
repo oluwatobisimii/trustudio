@@ -36,7 +36,7 @@ const ServiceOffering = () => {
     },
   ];
   return (
-    <section className="container mx-auto lg:p-20 space-y-[100px] lg:py-60">
+    <section className="container mx-auto p-6 md:p-10 lg:p-20 space-y-[100px] lg:py-60">
       <div className="flex flex-col lg:flex-row gap-6 lg:justify-between items-start">
         <div className="space-y-2">
           <p className="uppercase tracking-widest text-xs">what we offer</p>
@@ -46,7 +46,7 @@ const ServiceOffering = () => {
         </div>
         <ContactButton />
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 lg:gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-10 lg:gap-10">
         {SERVICE_OFFERINGS.map((item, i) => {
           return (
             <div className="text-[#505050] dark:text-white space-y-4" key={i}>
@@ -74,8 +74,8 @@ const LivestreamingMarquee = () => {
     "Zoom Integration",
   ];
   return (
-    <div className="w-full overflow-hidden whitespace-nowrap py-10 bg-[#5D3C18] font-trajan rotate-[-2deg]">
-      <p className="text-2xl  animate-marquee text-[#505050] dark:text-white">
+    <div className="w-full overflow-hidden whitespace-nowrap py-6 lg:py-10 bg-[#5D3C18] font-trajan rotate-[-2deg]">
+      <p className="md:text-xl lg:text-2xl  animate-marquee text-[#505050] dark:text-white">
         {LIVESTREAMING_OFFERINGS.map((item, i) => (
           <React.Fragment key={i}>
             <span key={i} className="mx-10">

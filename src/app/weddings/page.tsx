@@ -35,7 +35,7 @@ const WeddingsPage = () => {
   return (
     <>
       <section>
-        <div className="aspect-[1440/517] overflow-hidden relative grid place-items-center-safe">
+        <div className="aspect-[9/16] md:aspect-[1440/517] overflow-hidden relative grid place-items-center-safe">
           <video
             src={"./VideoMontage.mov"}
             autoPlay
@@ -54,12 +54,12 @@ const WeddingsPage = () => {
           </div>
         </div>
       </section>
-      <section className="lg:p-20 container mx-auto space-y-6 lg:space-y-16">
+      <section className="p-6 lg:p-20 container mx-auto space-y-20 lg:space-y-16">
         {WEDDINGS_LIST.map((item, i) => {
           return (
             <React.Fragment key={i}>
               <div
-                className="flex w-full flex-col lg:flex-row lg:gap-6 lg:items-center justify-between lg:h-[70dvh]"
+                className="flex w-full flex-col lg:flex-row gap-6 lg:items-center justify-between lg:h-[70dvh]"
                 key={i}
               >
                 <div className="w-full lg:w-1/3 space-y-4">
@@ -75,7 +75,7 @@ const WeddingsPage = () => {
                     <p> by TruStudio</p>
                   </div>
                 </div>
-                <div className="w-full lg:flex-1 aspect-video max-w-[800px]">
+                <div className="w-full lg:flex-1 aspect-video md:max-w-[800px]">
                   <iframe
                     className="w-full h-full"
                     src={item.videoUrl}

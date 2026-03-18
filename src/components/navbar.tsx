@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${getBackgroundClass()} ${getTextColorClass()}`}
     >
-      <div className="flex items-center justify-between w-full container mx-auto px-4 pt-4 pb-2 md:pt-6 md:pb-4">
+      <div className="flex items-center justify-between w-full container mx-auto px-4 py-6 md:py-6 ">
         {/* Mobile Hamburger Menu */}
         <button
           className="md:hidden p-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 rounded"
@@ -143,14 +143,11 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Logo - Centered */}
-        <div className="flex-none font-bold text-2xl tracking-widest font-playfair flex-shrink-0 mx-4 md:mx-0">
-          <Image
+        <div className="flex-none font-bold text-2xl tracking-widest font-playfair flex-shrink-0 mx-4 md:mx-0 h-10 md:h-14">
+          <img
             src="/logo_white.png"
             alt="Trustudio Logo"
-            width={170}
-            height={100}
-            className="transition-opacity duration-300"
-            priority
+            className="transition-opacity duration-300 w-full h-full object-cover"
           />
         </div>
 
@@ -176,6 +173,8 @@ const Navbar: React.FC = () => {
             </button>
           ))}
         </div>
+
+        <div className="md:hidden" />
       </div>
 
       {/* Mobile Menu Overlay */}
