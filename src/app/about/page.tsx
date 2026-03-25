@@ -57,7 +57,7 @@ const AboutPage = () => {
                 alt={member.name}
                 className=" object-cover"
               />
-              <div className="bg-white absolute bottom-10 left-1/2 right-0 p-2 w-4/5 transform -translate-x-1/2 p-6">
+              <div className="bg-white absolute bottom-10 left-1/2 right-0  w-4/5 transform -translate-x-1/2 p-6">
                 <p className="text-lg font-semibold text-[#333]">
                   {member.name}
                 </p>

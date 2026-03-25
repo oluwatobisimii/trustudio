@@ -1,29 +1,27 @@
 "use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const linksLeft = [
-  { name: "Home", to: "home" },
-  { name: "About", to: "about" },
-  { name: "Contact", to: "contact" },
+  { name: "Home", to: "/" },
+  { name: "About", to: "/about" },
+  { name: "Contact", to: "/contact" },
 ];
 
 const linksRight = [
-  { name: "Weddings", to: "weddings" },
-  { name: "Livestreams", to: "livestreams" },
-  { name: "Film/Documentary", to: "film" },
+  { name: "Weddings", to: "/weddings" },
+  { name: "Livestreams", to: "/livestreams" },
+  { name: "Film/Documentary", to: "/film" },
 ];
 
-const sections = [...linksLeft, ...linksRight];
-
 const Navbar: React.FC = () => {
-  const [active, setActive] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const router = useRouter();
+  const pathname = usePathname();
   // Detect system color preference
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -34,40 +32,24 @@ const Navbar: React.FC = () => {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
-  // Handle scroll for background + active link
+  // Handle scroll for background
   useEffect(() => {
     const handleScroll = () => {
-      // Background on scroll
       setIsScrolled(window.scrollY > 10);
-
-      // Active link highlight
-      let current = "home";
-      for (const section of sections) {
-        const el = document.getElementById(section.to);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 80 && rect.bottom > 80) {
-            current = section.to;
-            break;
-          }
-        }
-      }
-      setActive(current);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initialize on mount
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu when clicking a link
+  const isActive = (to: string) => {
+    if (to === "/") return pathname === "/";
+    return pathname === to || pathname.startsWith(`${to}/`);
+  };
+
   const handleNavClick = (to: string) => {
     setIsMobileMenuOpen(false);
-    const el = document.getElementById(to);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
     router.push(to);
   };
 
@@ -89,7 +71,7 @@ const Navbar: React.FC = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${getBackgroundClass()} ${getTextColorClass()}`}
     >
-      <div className="flex items-center justify-between w-full container mx-auto px-4 pt-4 pb-2 md:pt-6 md:pb-4">
+      <div className="flex items-center justify-between w-full container mx-auto px-4 py-6 md:py-6 ">
         {/* Mobile Hamburger Menu */}
         <button
           className="md:hidden p-2 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 rounded"
@@ -126,7 +108,7 @@ const Navbar: React.FC = () => {
               key={link.to}
               onClick={() => handleNavClick(link.to)}
               className={`text-base px-0.5 py-2 font-quicksand transition-all duration-200 relative ${
-                active === link.to
+                isActive(link.to)
                   ? isDarkMode
                     ? "font-bold text-red-300"
                     : "font-bold text-red-600"
@@ -135,7 +117,7 @@ const Navbar: React.FC = () => {
               style={{ fontFamily: "Quicksand, sans-serif" }}
             >
               {link.name}
-              {active === link.to && (
+              {isActive(link.to) && (
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-current rounded-full" />
               )}
             </button>
@@ -143,14 +125,13 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Logo - Centered */}
-        <div className="flex-none font-bold text-2xl tracking-widest font-playfair flex-shrink-0 mx-4 md:mx-0">
+        <div className="flex-none font-bold text-2xl tracking-widest font-playfair flex-shrink-0 mx-4 md:mx-0 h-10 md:h-14">
           <Image
             src="/logo_white.png"
             alt="Trustudio Logo"
-            width={170}
-            height={100}
-            className="transition-opacity duration-300"
-            priority
+            width={224}
+            height={56}
+            className="transition-opacity duration-300 w-full h-full object-cover"
           />
         </div>
 
@@ -161,7 +142,7 @@ const Navbar: React.FC = () => {
               key={link.to}
               onClick={() => handleNavClick(link.to)}
               className={`text-base px-0.5 py-2 font-quicksand transition-all duration-200 relative ${
-                active === link.to
+                isActive(link.to)
                   ? isDarkMode
                     ? "font-bold text-blue-300"
                     : "font-bold text-blue-600"
@@ -170,12 +151,14 @@ const Navbar: React.FC = () => {
               style={{ fontFamily: "Quicksand, sans-serif" }}
             >
               {link.name}
-              {active === link.to && (
+              {isActive(link.to) && (
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-current rounded-full" />
               )}
             </button>
           ))}
         </div>
+
+        <div className="md:hidden" />
       </div>
 
       {/* Mobile Menu Overlay */}
@@ -197,7 +180,7 @@ const Navbar: React.FC = () => {
               key={link.to}
               onClick={() => handleNavClick(link.to)}
               className={`block w-full text-left px-4 py-3 rounded-lg font-quicksand transition-colors duration-200 ${
-                active === link.to
+                isActive(link.to)
                   ? isDarkMode
                     ? "bg-red-900/30 text-red-300 font-bold"
                     : "bg-red-50 text-red-700 font-bold"
